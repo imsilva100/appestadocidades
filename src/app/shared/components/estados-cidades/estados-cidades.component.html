@@ -1,0 +1,31 @@
+<dx-select-box
+  #estadoAtual
+  noDataText="Sem dados para exibição"
+  [label]="labelEstado"
+  labelMode="floating"
+  placeholder="Selecione um estado"
+  [searchEnabled]="true"
+  [items]="estados"
+  [displayExpr]="getEstados"
+  (onValueChanged)="onValueChangeEstado($event)">
+</dx-select-box>
+
+<dx-select-box
+  #cidadeAtual
+  noDataText="Sem dados para exibição"
+  label="Cidades"
+  labelMode="floating"
+  placeholder="Selecione uma cidade"
+  [searchEnabled]="true"
+  [items]="cidades"
+  [displayExpr]="getCidades"
+  (onValueChanged)="onValueChangeCidade($event)"
+  >
+
+
+  //  [] = ts -> html
+  //  () = html -> ts
+  // [()] html <-> ts
+</dx-select-box>
+
+
