@@ -1,6 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
-import {EstadosCidadesComponent} from "./shared/components/estados-cidades/estados-cidades.component";
+
 
 @Component({
   selector: 'app-root',

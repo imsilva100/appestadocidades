@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {EstadosCidadesService} from "../../services/estados-cidades.service";
-import {Estado} from "../../../models/estado";
-import {Cidade} from "../../../models/cidade";
+import {EstadosCidadesService} from "../../shared/services/estados-cidades.service";
+import {Estado} from "../../models/estado";
+import {Cidade} from "../../models/cidade";
 
 @Component({
   selector: 'estados-cidades',
@@ -46,7 +46,7 @@ export class EstadosCidadesComponent implements OnInit, OnDestroy {
 
   onValueChangeEstado(value: any) {
     this.estadoChange?.emit(value.value)
-    console.log(value.value.sigla);
+    this.cidadeChange?.emit()
     this.service.getMunicipios(value.value.sigla)
       .subscribe({
         next: listaCidades => {
@@ -78,5 +78,6 @@ export class EstadosCidadesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
 
   }
+
 
 }

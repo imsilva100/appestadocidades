@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import {DxDataGridModule, DxFormModule, DxLoadIndicatorModule, DxSelectBoxModule} from 'devextreme-angular';
-import {EstadosCidadesComponent} from "./shared/components/estados-cidades/estados-cidades.component";
+import {EstadosCidadesComponent} from "./compoentes-globais/estados-cidades/estados-cidades.component";
 import {CommonModule} from "@angular/common";
 
 const routes: Routes = [
@@ -47,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'estados-cidades',
-    component: EstadosCidadesComponent
+    component: TasksComponent
   },
   {
     path: '**',

@@ -7,7 +7,7 @@ import {Cidade} from "../../models/cidade";
   styleUrls: [ './home.component.scss' ]
 })
 
-export class HomeComponent {
+export class EstadoCidades {
   constructor() {}
 
   varEstado: Estado | undefined;
