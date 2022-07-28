@@ -14,7 +14,7 @@ export const navigation = [
       },
       {
         text: 'Teste de Componente',
-        path: '/tasks'
+        path: '/estadocidade'
       }
     ]
   }

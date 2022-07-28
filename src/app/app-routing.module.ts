@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormComponent, ChangePasswordFormComponent } from './shared/components';
-import { AuthGuardService } from './shared/services';
-import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { TasksComponent } from './pages/tasks/tasks.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ChangePasswordFormComponent, CreateAccountFormComponent, LoginFormComponent, ResetPasswordFormComponent} from './shared/components';
+import {AuthGuardService} from './shared/services';
+import {HomeComponent} from './pages/home/home.component';
+import {ProfileComponent} from './pages/profile/profile.component';
+import {TasksComponent} from './pages/tasks/tasks.component';
 import {DxDataGridModule, DxFormModule, DxLoadIndicatorModule, DxSelectBoxModule} from 'devextreme-angular';
-import {EstadosCidadesComponent} from "./compoentes-globais/estados-cidades/estados-cidades.component";
+import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-cidades.component";
 import {CommonModule} from "@angular/common";
+import {EstadosPageComponent} from "./pages/estados-page/estados-page.component";
 
 const routes: Routes = [
   {
@@ -46,8 +47,8 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'estados-cidades',
-    component: TasksComponent
+    path: 'estadocidade',
+    component: EstadosPageComponent
   },
   {
     path: '**',
@@ -56,14 +57,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxSelectBoxModule, CommonModule, DxLoadIndicatorModule],
+  imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxSelectBoxModule, CommonModule, DxLoadIndicatorModule, EstadosCidadesModule],
   providers: [AuthGuardService],
-  exports: [RouterModule, EstadosCidadesComponent],
+  exports: [RouterModule],
   declarations: [
     HomeComponent,
     ProfileComponent,
     TasksComponent,
-    EstadosCidadesComponent
+    EstadosPageComponent
   ]
 })
 export class AppRoutingModule { }

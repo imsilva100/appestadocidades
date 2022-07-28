@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from './layouts';
-import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangePasswordFormModule, LoginFormModule } from './shared/components';
-import { AuthService, ScreenService, AppInfoService } from './shared/services';
-import { UnauthenticatedContentModule } from './unauthenticated-content';
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {SideNavInnerToolbarModule, SideNavOuterToolbarModule, SingleCardModule} from './layouts';
+import {ChangePasswordFormModule, CreateAccountFormModule, FooterModule, LoginFormModule, ResetPasswordFormModule} from './shared/components';
+import {AppInfoService, AuthService, ScreenService} from './shared/services';
+import {UnauthenticatedContentModule} from './unauthenticated-content';
+import {AppRoutingModule} from './app-routing.module';
 import {DxMenuModule, DxSelectBoxModule} from "devextreme-angular";
 import {EstadosCidadesService} from "./shared/services/estados-cidades.service";
 import {HttpClientModule} from "@angular/common/http";
+import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-cidades.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     HttpClientModule,
     DxSelectBoxModule,
-    DxMenuModule   // Módulo responsável pelos eventos
+    DxMenuModule,
+    EstadosCidadesModule
   ],
   providers: [
     AuthService,

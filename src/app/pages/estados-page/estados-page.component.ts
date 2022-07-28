@@ -3,11 +3,10 @@ import {Estado} from "../../models/estado";
 import {Cidade} from "../../models/cidade";
 
 @Component({
-  templateUrl: 'home.component.html',
-  styleUrls: [ './home.component.scss' ]
+  templateUrl: './estados-page.component.html'
 })
 
-export class EstadoCidades {
+export class EstadosPageComponent {
   constructor() {}
 
   varEstado: Estado | undefined;

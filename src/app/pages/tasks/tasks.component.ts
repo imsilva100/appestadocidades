@@ -4,13 +4,10 @@ import {Estado} from "../../models/estado";
 import {Cidade} from "../../models/cidade";
 
 @Component({
-  templateUrl: 'tasks.component.html'
+  templateUrl: './tasks.component.html'
 })
 
 export class TasksComponent {
-
-  varEstado: Estado | undefined;
-  varCidade: Cidade | undefined;
 
   dataSource: any;
   priority: any[];

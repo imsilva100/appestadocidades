@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {EstadosCidadesService} from "../../shared/services/estados-cidades.service";
-import {Estado} from "../../models/estado";
-import {Cidade} from "../../models/cidade";
+import {Component, EventEmitter, Input, NgModule, OnDestroy, OnInit, Output} from '@angular/core';
+import {EstadosCidadesService} from "../../services/estados-cidades.service";
+import {Estado} from "../../../models/estado";
+import {Cidade} from "../../../models/cidade";
+import {DxSelectBoxModule} from "devextreme-angular";
 
 @Component({
   selector: 'estados-cidades',
@@ -46,7 +47,7 @@ export class EstadosCidadesComponent implements OnInit, OnDestroy {
 
   onValueChangeEstado(value: any) {
     this.estadoChange?.emit(value.value)
-    this.cidadeChange?.emit()
+    this.cidadeChange?.emit(undefined)
     this.service.getMunicipios(value.value.sigla)
       .subscribe({
         next: listaCidades => {
@@ -81,3 +82,10 @@ export class EstadosCidadesComponent implements OnInit, OnDestroy {
 
 
 }
+
+@NgModule({
+  imports: [ DxSelectBoxModule],
+  declarations: [ EstadosCidadesComponent ],
+  exports: [ EstadosCidadesComponent ]
+})
+export class EstadosCidadesModule { }
