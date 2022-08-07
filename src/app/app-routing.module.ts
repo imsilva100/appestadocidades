@@ -9,8 +9,23 @@ import {DxDataGridModule, DxFormModule, DxLoadIndicatorModule, DxSelectBoxModule
 import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-cidades.component";
 import {CommonModule} from "@angular/common";
 import {EstadosPageComponent} from "./pages/estados-page/estados-page.component";
+import {ClientesComponent} from "./shared/components/clientes/clientes.component";
+import {ProdutosComponent} from "./shared/components/produtos/produtos.component";
+import {NotasFiscaisComponent} from "./shared/components/notas/notas-fiscais.component";
 
 const routes: Routes = [
+  {
+    path: 'clientes',
+    component: ClientesComponent
+  },
+  {
+    path: 'produtos',
+    component: ProdutosComponent
+  },
+  {
+    path: 'notas-fiscais',
+    component: NotasFiscaisComponent
+  },
   {
     path: 'tasks',
     component: TasksComponent,
