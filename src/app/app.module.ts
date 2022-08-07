@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import  {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -7,7 +7,15 @@ import {ChangePasswordFormModule, CreateAccountFormModule, FooterModule, LoginFo
 import {AppInfoService, AuthService, ScreenService} from './shared/services';
 import {UnauthenticatedContentModule} from './unauthenticated-content';
 import {AppRoutingModule} from './app-routing.module';
-import {DxMenuModule, DxSelectBoxModule} from "devextreme-angular";
+import {ClientesComponent} from './shared/components/clientes/clientes.component';
+import {ProdutosComponent} from './shared/components/produtos/produtos.component';
+import {NotasFiscaisComponent} from './shared/components/notas/notas-fiscais.component';
+import {ClientesService} from "./shared/services/clientes.service";
+import {ProdutosService} from "./shared/services/produtos.service";
+import {NotasService} from "./shared/services/notas.service";
+import { ItensNotaFiscalDetalheComponent } from './shared/components/notas/detalhe/itens-nota-fiscal-detalhe/itens-nota-fiscal-detalhe.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {DxDataGridModule, DxFormModule, DxLookupModule, DxMenuModule, DxSelectBoxModule} from "devextreme-angular";
 import {EstadosCidadesService} from "./shared/services/estados-cidades.service";
 import {HttpClientModule} from "@angular/common/http";
 import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-cidades.component";
@@ -15,6 +23,10 @@ import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-
 @NgModule({
   declarations: [
     AppComponent,
+    ClientesComponent,
+    ProdutosComponent,
+    NotasFiscaisComponent,
+    ItensNotaFiscalDetalheComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +41,9 @@ import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-
     UnauthenticatedContentModule,
     AppRoutingModule,
     HttpClientModule,
+    DxDataGridModule,
+    DxFormModule,
+    DxLookupModule,
     DxSelectBoxModule,
     DxMenuModule,
     EstadosCidadesModule
@@ -37,7 +52,10 @@ import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-
     AuthService,
     ScreenService,
     AppInfoService,
-    EstadosCidadesService
+    EstadosCidadesService,
+    ClientesService,
+    ProdutosService,
+    NotasService
   ],
   bootstrap: [AppComponent]
 })

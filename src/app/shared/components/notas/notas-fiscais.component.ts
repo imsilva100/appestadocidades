@@ -6,9 +6,10 @@ import {Observable} from "rxjs";
 import {Produto} from "../../../models/produto";
 import {Cliente} from "../../../models/cliente";
 import {ClientesService} from "../../services/clientes.service";
+import {Nota} from "../../../models/nota";
 
 @Component({
-  selector: 'app-notas-fiscais',
+  selector: 'app-notas',
   templateUrl: './notas-fiscais.component.html',
   styleUrls: ['./notas-fiscais.component.scss']
 })
@@ -16,7 +17,7 @@ export class NotasFiscaisComponent implements OnInit {
 
   @ViewChild (DxDataGridComponent , { static : false }) dataGrid : DxDataGridComponent | undefined
 
-  notasFiscais: NotaFiscal[] = [];
+  notasFiscais: Nota[] = [];
   clientes: Cliente[] = [];
 
   captionDetalhe: string = 'Cabeçalho do detalhe';
@@ -37,7 +38,7 @@ export class NotasFiscaisComponent implements OnInit {
   }
 
   onSaved($event: any) {
-    let result: Observable<NotaFiscal[]> | undefined;
+    let result: Observable<Nota[]> | undefined;
 
     if($event.changes.length !== 0) {
 
