@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, take} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {NotaFiscal} from "../../models/nota-fiscal";
+import {Nota} from "../../models/nota";
 import {Produto} from "../../models/produto";
 
 const API = 'http://localhost:8080/notasFiscais';
@@ -11,26 +11,23 @@ const API = 'http://localhost:8080/notasFiscais';
 })
 export class NotasService {
 
-  // dropdownbox - ver se pode ser usado para produtos e clientes
-  // https://github.com/DevExpress-Examples/Form---Declare-dropdownbox-in-a-form-item/tree/20.1.6%2B/Angular/src/app
-
   constructor(private http: HttpClient) { }
 
-  requestNotasFiscais(metodo: string, notaFiscal?: NotaFiscal, id?: any) {
-    let result: Observable<NotaFiscal[]> | undefined;
+  requestNotasFiscais(metodo: string, notaFiscal?: Nota, id?: any) {
+    let result: Observable<Nota[]> | undefined;
 
     switch (metodo) {
       case 'GET':
-        result = this.http.get<NotaFiscal[]>(API);
+        result = this.http.get<Nota[]>(API);
         break
       case 'POST':
-        result = this.http.post<NotaFiscal[]>(API, notaFiscal);
+        result = this.http.post<Nota[]>(API, notaFiscal);
         break;
       case 'PUT':
-        result = this.http.put<NotaFiscal[]>(`${API}/${id}`, notaFiscal);
+        result = this.http.put<Nota[]>(`${API}/${id}`, notaFiscal);
         break;
       case 'DELETE':
-        result = this.http.delete<NotaFiscal[]>(`${API}/${id}`);
+        result = this.http.delete<Nota[]>(`${API}/${id}`);
         break;
     }
     if(result) {
@@ -38,29 +35,4 @@ export class NotasService {
     }
     return;
   }
-  /*
-  getNotasFiscais(): Observable<NotaFiscal[]> {
-    return this.http
-      .get<NotaFiscal[]>(API)
-      .pipe(take(1));
-  }
-
-  postNotaFiscal(notaFiscal: NotaFiscal): Observable<NotaFiscal[]>{
-    return this.http
-      .post<NotaFiscal[]>(API, notaFiscal)
-      .pipe(take(1));
-  }
-  putNotaFiscal(notaFiscal: NotaFiscal, id: number): Observable<NotaFiscal[]>{
-    return this.http
-      .put<NotaFiscal[]>(`${API}/${id}`, notaFiscal)
-      .pipe(take(1));
-  }
-
-  deleteNotaFiscal(id: number): Observable<NotaFiscal[]>{
-    let temp = `${API}/${id}`;
-    return this.http
-      .delete<NotaFiscal[]>(`${API}/${id}`)
-      .pipe(take(1));
-  }
-*/
 }

@@ -1,9 +1,7 @@
 import {Component, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {NotasService} from "../../services/notas.service";
 import {DxDataGridComponent} from "devextreme-angular";
-import DevExpress from "devextreme";
 import {Observable} from "rxjs";
-import {Produto} from "../../../models/produto";
 import {Cliente} from "../../../models/cliente";
 import {ClientesService} from "../../services/clientes.service";
 import {Nota} from "../../../models/nota";
