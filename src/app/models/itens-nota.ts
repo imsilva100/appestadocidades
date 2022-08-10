@@ -4,22 +4,22 @@ import {Nota} from "./nota";
 export class ItensNota {
 
   id: bigint | undefined;
-  notaFiscal: Nota | undefined;
-  sequencial: number | undefined;
+  nota: Nota | undefined;
+  sequencia: number | undefined;
   produto: Produto | undefined;
   quantidade: number | undefined;
-  valorTotal: number | undefined
+  valor: number | undefined
 
 }
 
 export class ItemNotaFiscal1 {
 
   id: bigint | undefined;
-  notaFiscal: number | undefined;
-  sequencial: number | undefined;
+  nota: number | undefined;
+  sequencia: number | undefined;
   produto: number | undefined;
   quantidade: number | undefined;
-  valorTotal: number | undefined
+  valor: number | undefined
 
 }
 

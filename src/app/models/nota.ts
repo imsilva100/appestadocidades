@@ -3,9 +3,9 @@ import {ItensNota} from "./itens-nota";
 
 export class Nota {
   id: bigint | undefined;
-  numero: bigint | undefined;
-  data: Date | undefined;
-  itemNotaFiscal: ItensNota | undefined;
+  numeroNota: bigint | undefined;
+  dataNota: Date | undefined;
+  itensNota: ItensNota | undefined;
   cliente: Cliente | undefined;
 
 }

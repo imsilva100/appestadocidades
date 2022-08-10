@@ -41,8 +41,8 @@
     </dxo-popup>
     <dxo-form>
       <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
-        <dxi-item caption="Nº" dataField="numero" [editorOptions]="{ width: 100 }"></dxi-item>
-        <dxi-item dataField="data" [editorOptions]="{ width: 150 }" format="dd/MM/yyyy"></dxi-item>
+        <dxi-item caption="Nº" dataField="numeroNota" [editorOptions]="{ width: 100 }"></dxi-item>
+        <dxi-item dataField="dataNota" [editorOptions]="{ width: 150 }" format="dd/MM/yyyy"></dxi-item>
         <dxi-item
 
           caption="Nome do cliente"
@@ -63,7 +63,7 @@
 
   <dxi-column dataField="numero" [width]="100" alignment="center" caption="Nº"></dxi-column>
   <dxi-column dataField="data" [width]="150" dataType="date" format="dd/MM/yyyy" alignment="center"
-              caption="Emissão"></dxi-column>
+              caption="Data da Nota"></dxi-column>
   <dxi-column dataField="cliente.nome" [width]="500" caption="Cliente">
     <dx-select-box
       [dataSource]="clientes"
@@ -81,27 +81,3 @@
   </div>
 </dx-data-grid>
 
-<!--
-<dxi-column
-  dataField="cliente.id"
-  caption="Cliente"
-  [setCellValue]="setStateValue" >
-  <dxo-lookup
-    [dataSource]="clientes"
-    valueExpr="id"
-    displayExpr="nome">
-  </dxo-lookup>
-</dxi-column>
--->
-
-<!--
-Funcionando
-        <dxi-item
-          caption="Nome do cliente"
-          dataField="cliente.nome"
-          [editorOptions]="{ width: 500 }">
-
-
-        </dxi-item>
-
--->

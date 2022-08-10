@@ -21,13 +21,13 @@ export class ClientesService {
         result = this.http.get<Cliente[]>(API);
         break;
       case 'POST':
-        result = this.http.post<Cliente[]>(API, cliente)
+        result = this.http.post<Cliente[]>(`${API}/novo`, cliente)
         break;
       case 'PUT':
-        result = this.http.put<Cliente[]>(`${API}/${id}`, cliente)
+        result = this.http.put<Cliente[]>(`${API}/altera`, cliente)
         break;
       case 'DELETE':
-        result = this.http.delete<Cliente[]>(`${API}/${id}`)
+        result = this.http.delete<Cliente[]>(`${API}/deleta/${id}`)
         break;
     }
     if(result) {
@@ -36,3 +36,28 @@ export class ClientesService {
     return;
   }
 }
+/*
+getNotasFiscais(): Observable<NotaFiscal[]> {
+return this.http
+.get<NotaFiscal[]>(API)
+.pipe(take(1));
+}
+
+postNotaFiscal(notaFiscal: NotaFiscal): Observable<NotaFiscal[]>{
+return this.http
+.post<NotaFiscal[]>(API, notaFiscal)
+.pipe(take(1));
+}
+putNotaFiscal(notaFiscal: NotaFiscal, id: number): Observable<NotaFiscal[]>{
+return this.http
+.put<NotaFiscal[]>(`${API}/${id}`, notaFiscal)
+.pipe(take(1));
+}
+
+deleteNotaFiscal(id: number): Observable<NotaFiscal[]>{
+let temp = `${API}/${id}`;
+return this.http
+.delete<NotaFiscal[]>(`${API}/${id}`)
+.pipe(take(1));
+}
+*/

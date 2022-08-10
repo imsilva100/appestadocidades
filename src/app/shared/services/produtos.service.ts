@@ -19,13 +19,15 @@ export class ProdutosService {
         result = this.http.get<Produto[]>(API);
         break;
       case 'POST':
-        result = this.http.post<Produto[]>(API, produto)
+        console.log(produto);
+        result = this.http.post<Produto[]>(`${API}/novo`, produto)
         break;
       case 'PUT':
-        result = this.http.put<Produto[]>(`${API}/${id}`, produto)
+        result = this.http.put<Produto[]>(`${API}/altera`, produto)
         break;
       case 'DELETE':
-        result = this.http.delete<Produto[]>(`${API}/${id}`)
+        result = this.http.delete<Produto[]>(`${API}/deleta/${id}`)
+        console.log(result);
         break;
     }
     if(result) {

@@ -37,6 +37,7 @@ export class ProdutosComponent implements OnInit {
           result = this.produtoService.requestProduto('POST', $event.changes[0].data);
           break;
         case 'update':
+          console.log(data);
           result = this.produtoService.requestProduto('PUT', data, data.id);
           break;
         case 'remove':

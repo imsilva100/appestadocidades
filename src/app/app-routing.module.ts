@@ -72,7 +72,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxSelectBoxModule, CommonModule, DxLoadIndicatorModule, EstadosCidadesModule],
+  imports: [RouterModule.forRoot(routes, {useHash: false}), DxDataGridModule, DxFormModule, DxSelectBoxModule, CommonModule, DxLoadIndicatorModule, EstadosCidadesModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [

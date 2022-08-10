@@ -12,7 +12,7 @@ import {NotasFiscaisComponent} from './shared/components/notas/notas-fiscais.com
 import {ClientesService} from "./shared/services/clientes.service";
 import {ProdutosService} from "./shared/services/produtos.service";
 import {NotasService} from "./shared/services/notas.service";
-import { ItensNotaFiscalDetalheComponent } from './shared/components/notas/detalhe/itens-nota-fiscal-detalhe/itens-nota-fiscal-detalhe.component';
+import { ItensNotaFiscalDetalheComponent } from './shared/components/notas/itens-nota/itens-nota-fiscal/itens-nota-fiscal-detalhe.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {DxDataGridModule, DxFormModule, DxLookupModule, DxMenuModule, DxSelectBoxModule} from "devextreme-angular";
 import {EstadosCidadesService} from "./shared/services/estados-cidades.service";

@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Nota} from "../../models/nota";
 import {Produto} from "../../models/produto";
 
-const API = 'http://localhost:8080/notasFiscais';
+const API = 'http://localhost:8080/notas';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,7 @@ export class NotasService {
     switch (metodo) {
       case 'GET':
         result = this.http.get<Nota[]>(API);
+        console.log(notaFiscal);
         break
       case 'POST':
         result = this.http.post<Nota[]>(API, notaFiscal);
@@ -27,12 +28,13 @@ export class NotasService {
         result = this.http.put<Nota[]>(`${API}/${id}`, notaFiscal);
         break;
       case 'DELETE':
-        result = this.http.delete<Nota[]>(`${API}/${id}`);
+        result = this.http.delete<Nota[]>(`${API}/deleta/${id}`);
         break;
     }
-    if(result) {
+    if (result) {
       return result.pipe(take(1));
     }
     return;
   }
+
 }
