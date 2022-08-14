@@ -8,10 +8,10 @@ import {Nota} from "../../../models/nota";
 
 @Component({
   selector: 'app-notas',
-  templateUrl: './notas-fiscais.component.html',
-  styleUrls: ['./notas-fiscais.component.scss']
+  templateUrl: './notas.component.html',
+  styleUrls: ['./notas.component.scss']
 })
-export class NotasFiscaisComponent implements OnInit {
+export class NotasComponent implements OnInit {
 
   @ViewChild (DxDataGridComponent , { static : false }) dataGrid : DxDataGridComponent | undefined
 

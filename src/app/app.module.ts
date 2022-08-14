@@ -8,7 +8,7 @@ import {UnauthenticatedContentModule} from './unauthenticated-content';
 import {AppRoutingModule} from './app-routing.module';
 import {ClientesComponent} from './shared/components/clientes/clientes.component';
 import {ProdutosComponent} from './shared/components/produtos/produtos.component';
-import {NotasFiscaisComponent} from './shared/components/notas/notas-fiscais.component';
+import {NotasComponent} from './shared/components/notas/notas.component';
 import {ClientesService} from "./shared/services/clientes.service";
 import {ProdutosService} from "./shared/services/produtos.service";
 import {NotasService} from "./shared/services/notas.service";
@@ -24,7 +24,7 @@ import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-
     AppComponent,
     ClientesComponent,
     ProdutosComponent,
-    NotasFiscaisComponent,
+    NotasComponent,
     ItensNotaFiscalDetalheComponent
   ],
   imports: [

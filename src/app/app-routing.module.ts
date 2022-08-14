@@ -11,7 +11,7 @@ import {CommonModule} from "@angular/common";
 import {EstadosPageComponent} from "./pages/estados-page/estados-page.component";
 import {ClientesComponent} from "./shared/components/clientes/clientes.component";
 import {ProdutosComponent} from "./shared/components/produtos/produtos.component";
-import {NotasFiscaisComponent} from "./shared/components/notas/notas-fiscais.component";
+import {NotasComponent} from "./shared/components/notas/notas.component";
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'notas-fiscais',
-    component: NotasFiscaisComponent
+    component: NotasComponent
   },
   {
     path: 'tasks',
