@@ -1,5 +1,4 @@
 <div id="data-grid-demo">
-  <!--    [remoteOperations]="operacoesRemotas"-->
   <dx-data-grid
     id="gridContainer"
     [dataSource]="produtos"
@@ -12,7 +11,7 @@
     (onSaved)="onSaved($event)"
   >
     <dxo-paging [enabled]="true"></dxo-paging>
-    <!--      [texts]="mensagens"-->
+
     <dxo-editing
       title="Produtos"
       mode="popup"

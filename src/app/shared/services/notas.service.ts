@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, take} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Nota} from "../../models/nota";
+import {Nota_fiscal} from "../../models/nota_fiscal";
 import {Produto} from "../../models/produto";
 
 const API = 'http://localhost:8080/notas';
@@ -13,22 +13,22 @@ export class NotasService {
 
   constructor(private http: HttpClient) { }
 
-  requestNotasFiscais(metodo: string, notaFiscal?: Nota, id?: any) {
-    let result: Observable<Nota[]> | undefined;
+  requestNotasFiscais(metodo: string, notaFiscal?: Nota_fiscal, id?: any) {
+    let result: Observable<Nota_fiscal[]> | undefined;
 
     switch (metodo) {
       case 'GET':
-        result = this.http.get<Nota[]>(API);
-        console.log(notaFiscal);
+        result = this.http.get<Nota_fiscal[]>(API);
+        console.log(result);
         break
       case 'POST':
-        result = this.http.post<Nota[]>(API, notaFiscal);
+        result = this.http.post<Nota_fiscal[]>(API, notaFiscal);
         break;
       case 'PUT':
-        result = this.http.put<Nota[]>(`${API}/${id}`, notaFiscal);
+        result = this.http.put<Nota_fiscal[]>(`${API}/${id}`, notaFiscal);
         break;
       case 'DELETE':
-        result = this.http.delete<Nota[]>(`${API}/deleta/${id}`);
+        result = this.http.delete<Nota_fiscal[]>(`${API}/deleta/${id}`);
         break;
     }
     if (result) {

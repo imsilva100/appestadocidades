@@ -33,15 +33,15 @@
     [useIcons]="true"
   >
     <dxo-popup
-      title="Detalhes da Nota Fiscal"
+      title="Detalhes da Nota_fiscal Fiscal"
       [showTitle]="true"
       [width]="900"
       [height]="525"
     >
     </dxo-popup>
     <dxo-form>
-      <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
-        <dxi-item caption="Numero" dataField="numeroNota" [editorOptions]="{ width: 100 }"></dxi-item>
+      <dxi-item itemType="group" [colCount]="1" [colSpan]="1" >
+        <dxi-item caption="Número" dataField="numeroNota" [editorOptions]="{ width: 100 }"></dxi-item>
         <dxi-item dataField="dataNota" [editorOptions]="{ width: 150 }" format="dd/MM/yyyy"></dxi-item>
         <dxi-item
 
@@ -61,9 +61,9 @@
 
   </dxo-editing>
 
-  <dxi-column dataField="numero_nota" [width]="100" alignment="center" caption="Nº"></dxi-column>
-  <dxi-column dataField="data_nota" [width]="150" dataType="date" format="dd/MM/yyyy" alignment="center"
-              caption="Data da Nota"></dxi-column>
+  <dxi-column dataField="numeroNota" [width]="100" alignment="left" caption="Número"></dxi-column>
+  <dxi-column dataField="dataNota" [width]="150" dataType="date" format="dd/MM/yyyy" alignment="center"
+              caption="Data da Nota fiscal"></dxi-column>
   <dxi-column dataField="cliente.nome" [width]="500" caption="Cliente">
     <dx-select-box
       [dataSource]="clientes"

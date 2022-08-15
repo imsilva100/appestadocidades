@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
-import {ItensNota} from "../../../../../models/itens-nota";
+import {Itens_nota} from "../../../../../models/itens_nota";
 import {ItensNotaService} from "../../../../services/itens-nota.service";
 
 @Component({
@@ -11,7 +11,7 @@ export class ItensNotaFiscalDetalheComponent implements AfterViewInit {
 
   @Input() key: number | undefined;
 
-  itensNotaFiscal: ItensNota[] = [];
+  itensNotaFiscal: Itens_nota[] = [];
 
   constructor(private itensNotaFiscalService: ItensNotaService) {
   }

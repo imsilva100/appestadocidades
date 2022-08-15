@@ -4,7 +4,7 @@ import {DxDataGridComponent} from "devextreme-angular";
 import {Observable} from "rxjs";
 import {Cliente} from "../../../models/cliente";
 import {ClientesService} from "../../services/clientes.service";
-import {Nota} from "../../../models/nota";
+import {Nota_fiscal} from "../../../models/nota_fiscal";
 
 @Component({
   selector: 'app-notas',
@@ -15,7 +15,7 @@ export class NotasComponent implements OnInit {
 
   @ViewChild (DxDataGridComponent , { static : false }) dataGrid : DxDataGridComponent | undefined
 
-  notasFiscais: Nota[] = [];
+  notasFiscais: Nota_fiscal[] = [];
   clientes: Cliente[] = [];
 
   captionDetalhe: string = 'Cabeçalho do detalhe';
@@ -29,14 +29,14 @@ export class NotasComponent implements OnInit {
   ngOnInit(): void {
 
     this.notasFiscaisService.requestNotasFiscais('GET')?.subscribe({
-      next: value => this.notasFiscais = value})
+      next: value => {this.notasFiscais = value; console.log(this.notasFiscais)}})
 
     this.clienteService.requestCliente('GET')?.subscribe({
       next: value => {this.clientes = value; console.log(this.clientes)}})
   }
 
   onSaved($event: any) {
-    let result: Observable<Nota[]> | undefined;
+    let result: Observable<Nota_fiscal[]> | undefined;
 
     if($event.changes.length !== 0) {
 
