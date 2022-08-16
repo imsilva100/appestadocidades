@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Observable, take} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Nota_fiscal} from "../../models/nota_fiscal";
-import {Produto} from "../../models/produto";
 
 const API = 'http://localhost:8080/notas';
 
@@ -36,5 +35,4 @@ export class NotasService {
     }
     return;
   }
-
 }

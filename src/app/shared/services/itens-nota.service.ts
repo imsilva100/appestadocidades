@@ -13,9 +13,16 @@ export class ItensNotaService {
 
   constructor(private http: HttpClient) { }
 
-  getItensNotaFiscalId(id: number | undefined): Observable<Itens_nota[]> {
+  getItensNotaFiscalId(nota_id: number | undefined): Observable<Itens_nota[]> {
+
+    let itens: Observable<Itens_nota[]>;
+
+    itens = this.http.get<Itens_nota[]>(`${API}/${nota_id}`)
+      .pipe(take(1));
+
+    console.log("Itens-Serviço: ", itens);
     return this.http
-      .get<Itens_nota[]>(`${API}/${id}`)
+      .get<Itens_nota[]>(`${API}/${nota_id}`)
       .pipe(take(1));
   }
 

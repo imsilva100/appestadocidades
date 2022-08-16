@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import {Cliente} from "../../../models/cliente";
 import {ClientesService} from "../../services/clientes.service";
 import {Nota_fiscal} from "../../../models/nota_fiscal";
+import {ItensNotaService} from "../../services/itens-nota.service";
+import {Itens_nota} from "../../../models/itens_nota";
 
 @Component({
   selector: 'app-notas',
@@ -17,14 +19,16 @@ export class NotasComponent implements OnInit {
 
   notasFiscais: Nota_fiscal[] = [];
   clientes: Cliente[] = [];
+  itensNota: Itens_nota[] = [];
 
-  captionDetalhe: string = 'Cabeçalho do detalhe';
+
 
 
 
   constructor(
     private notasFiscaisService: NotasService,
-    private clienteService: ClientesService) { }
+    private clienteService: ClientesService,
+    private itensNotaService: ItensNotaService) { }
 
   ngOnInit(): void {
 
@@ -81,5 +85,9 @@ export class NotasComponent implements OnInit {
   }
 
 
+  onEditingStart(e: any) {
+    this.itensNotaService.getItensNotaFiscalId(e.data.id).subscribe({
+      next: value => this.itensNota })
+  }
 }
 

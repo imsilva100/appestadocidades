@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Cliente} from "../../models/cliente";
 import {Observable, take} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Produto} from "../../models/produto";
 
 const API = 'http://localhost:8080/clientes';
 

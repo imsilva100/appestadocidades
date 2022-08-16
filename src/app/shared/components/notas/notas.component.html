@@ -75,9 +75,8 @@
   <dxo-master-detail [enabled]="true" template="itensNf"></dxo-master-detail>
   <div *dxTemplate="let itens of 'itensNf'">
     <div class="master-detail-caption">
-      {{captionDetalhe}} - {{itens.data.cliente.nome}}
+
     </div>
     <itens-nota-fiscal-detalhe [key]="itens.data.id"></itens-nota-fiscal-detalhe>
   </div>
 </dx-data-grid>
-

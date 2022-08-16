@@ -4,9 +4,9 @@ import {Nota_fiscal} from "./nota_fiscal";
 export class Itens_nota {
 
   id: bigint | undefined;
-  nota_id: bigint | undefined;
+  nota: Nota_fiscal | undefined;
   sequencia: number | undefined;
-  produto_id: bigint | undefined;
+  produto: Produto | undefined;
   quantidade: number | undefined;
   valor: number | undefined
 

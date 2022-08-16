@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
-import {Itens_nota} from "../../../../../models/itens_nota";
 import {ItensNotaService} from "../../../../services/itens-nota.service";
+import {Itens_nota} from "../../../../../models/itens_nota";
 
 @Component({
   selector: 'itens-nota-fiscal-detalhe',
@@ -21,7 +21,7 @@ export class ItensNotaFiscalDetalheComponent implements AfterViewInit {
     this.itensNotaFiscalService.getItensNotaFiscalId(this.key).subscribe({
       next: value => {
         this.itensNotaFiscal = value;
-        //console.log(this.itensNotaFiscal)
+        console.log("ItensNotaFiscalDetalheComponent: ", this.itensNotaFiscal)
       },
       error: err => console.log(err),
       complete: () => console.log
