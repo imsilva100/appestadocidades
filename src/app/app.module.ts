@@ -14,7 +14,14 @@ import {ProdutosService} from "./shared/services/produtos.service";
 import {NotasService} from "./shared/services/notas.service";
 import { ItensNotaFiscalDetalheComponent } from './shared/components/notas/itens-nota/itens-nota-fiscal/itens-nota-fiscal-detalhe.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {DxDataGridModule, DxFormModule, DxLookupModule, DxMenuModule, DxSelectBoxModule} from "devextreme-angular";
+import {
+  DxDataGridModule,
+  DxFormModule,
+  DxLookupModule,
+  DxMenuModule,
+  DxSelectBoxModule,
+  DxTreeListModule
+} from "devextreme-angular";
 import {EstadosCidadesService} from "./shared/services/estados-cidades.service";
 import {HttpClientModule} from "@angular/common/http";
 import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-cidades.component";
@@ -45,7 +52,8 @@ import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-
     DxLookupModule,
     DxSelectBoxModule,
     DxMenuModule,
-    EstadosCidadesModule
+    EstadosCidadesModule,
+    DxTreeListModule
   ],
   providers: [
     AuthService,

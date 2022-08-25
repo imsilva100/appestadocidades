@@ -15,19 +15,7 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [];
 
-  mensagens: any = {
-    addRow: 'Adicionar',
-    cancelAllChanges: 'Cancelar',
-    cancelRowChanges: 'Cancelar',
-    confirmDeleteMessage: 'Confirma',
-    confirmDeleteTitle: 'Deletar',
-    deleteRow: 'Deletar',
-    editRow: 'Editar',
-    saveAllChanges: 'Salvar',
-    saveRowChanges: 'Salvar',
-    undeleteRow: 'Cancelar',
-    validationCancelChanges: 'Cancelar'
-  }
+
 
   operacoesRemotas: any = {
     filtering: true,

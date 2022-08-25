@@ -1,4 +1,3 @@
-<div id="data-grid">
   <dx-data-grid
     id="gridContainer"
     [dataSource]="clientes"
@@ -7,7 +6,7 @@
     [showRowLines]="true"
     [showBorders]="true"
     [rowAlternationEnabled]="true"
-    noDataText="Sem dados para exibição."
+    noDataText="Não há dados Cadastrados."
     [remoteOperations]="operacoesRemotas"
     (onSaved)="onSaved($event)"
   >
@@ -19,7 +18,6 @@
       [allowAdding]="true"
       [allowDeleting]="true"
       [confirmDelete]="true"
-      [texts]="mensagens"
       [useIcons]="true"
     >
       <dxo-popup
@@ -37,8 +35,7 @@
     </dxo-editing>
 
     <dxi-column dataField="nome" caption="Nome">
-      <dxi-validation-rule type="required" message="O nome é obrigatório"></dxi-validation-rule>
+      <dxi-validation-rule type="required" message="Campo obrigatório"></dxi-validation-rule>
     </dxi-column>
   </dx-data-grid>
-</div>
 

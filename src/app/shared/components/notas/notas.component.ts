@@ -89,5 +89,15 @@ export class NotasComponent implements OnInit {
     this.itensNotaService.getItensNotaFiscalId(e.data.id).subscribe({
       next: value => this.itensNota })
   }
+
+  editorPreparing(e: any) {
+    this.itensNotaService.getItensNotaFiscalId(e.data.id).subscribe({
+      next: value => this.itensNota })
+  }
+
+  initNewRow(e: any) {
+    this.itensNotaService.getItensNotaFiscalId(e.data.id).subscribe({
+      next: value => this.itensNota })
+  }
 }
 

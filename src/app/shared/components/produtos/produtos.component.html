@@ -1,4 +1,3 @@
-<div id="data-grid-demo">
   <dx-data-grid
     id="gridContainer"
     [dataSource]="produtos"
@@ -7,7 +6,7 @@
     [showRowLines]="true"
     [showBorders]="true"
     [rowAlternationEnabled]="true"
-    noDataText="Sem dados para exibição."
+    noDataText="Não há dados Cadastrados."
     (onSaved)="onSaved($event)"
   >
     <dxo-paging [enabled]="true"></dxo-paging>
@@ -30,15 +29,14 @@
       </dxo-popup>
       <dxo-form>
         <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
-          <dxi-item dataField="codigo" [editorOptions]="{ width: 100 }"></dxi-item>
+          <dxi-item dataField="codigo" [editorOptions]="{ width: 200 }"></dxi-item>
           <dxi-item dataField="descricao" [editorOptions]="{ width: 700 }" ></dxi-item>
           <dxi-item dataField="preco" [editorOptions]="{ width: 200 }" formatValues="currency"></dxi-item>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
 
-    <dxi-column dataField="codigo" caption="Código" [width]="100" alignment="center"></dxi-column>
-    <dxi-column dataField="descricao" caption="Descrição" [width]="700"></dxi-column>
+    <dxi-column dataField="codigo" caption="Código" [width]="200"  alignment="center"></dxi-column>
+    <dxi-column dataField="descricao" caption="Descrição" ></dxi-column>
     <dxi-column dataField="preco" caption="Valor Unitário" [width]="200" format="R$ #,###,##0.00" alignment="center"></dxi-column>
   </dx-data-grid>
-</div>
