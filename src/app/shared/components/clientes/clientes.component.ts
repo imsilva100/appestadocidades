@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Cliente} from "../../../models/cliente";
 import {ClientesService} from "../../services/clientes.service";
 import {DxDataGridComponent, DxFormComponent} from "devextreme-angular";
-import {Observable} from "rxjs";
+import {Observable, take} from "rxjs";
 
 @Component({
   selector: 'app-clientes',
@@ -15,7 +15,7 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [];
 
-
+  submitted = false;
 
   operacoesRemotas: any = {
     filtering: true,
@@ -29,42 +29,44 @@ export class ClientesComponent implements OnInit {
   constructor(private clienteService: ClientesService) {}
 
   ngOnInit(): void {
-    this.clienteService.requestCliente('GET')?.subscribe({
+    this.clienteService.getClientes().subscribe({
       next: value => this.clientes = value,
       error: err => console.log('ERRO: ', err),
       complete: () => {}
     });
+
   }
 
-  onSaved($event: any) {
-
+  /*onSaved($event: any){
     let result: Observable<Cliente[]> | undefined;
-    if($event.changes.length !== 0) {
-
-      let data = $event.changes[0].data;
-      switch ($event.changes[0].type) {
-        case 'insert':
-          result = this.clienteService.requestCliente('POST', data);
-          break;
-
-        case 'update':
-          result = this.clienteService.requestCliente('PUT', data, data.id);
-          break;
-
-        case 'remove':
-          let id = $event.changes[0].key;
-          result = this.clienteService.requestCliente('DELETE', data, id);
-          break;
-
-      }
-      if(result) {
-        result?.subscribe({
-          next: () => console.log,
-          error: err => console.log(err),
-          complete: () => console.log
-        })
-      }
-      this.dataGrid?.instance.refresh();
+    if($event.changes[0].type == 'insert') {
+      $event.changes[0].data.id = null;
+      // result =
+      this.clienteService.postCliente($event.changes[0].data).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      });
     }
+    if($event.changes[0].type == 'update'){
+
+    }
+
+    if($event.changes[0].type == 'delete'){
+
+    }
+    this.dataGrid?.instance.refresh();
+  }*/
+
+  onSaved($event: any){
+    $event.changes[0].data.id = null;
+    this.clienteService.postCliente($event.changes[0].data).subscribe({
+      next: () => console.log,
+      error: err => console.log(err),
+      complete: () => console.log
+    }
+
+    )
   }
+
 }

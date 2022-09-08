@@ -35,8 +35,7 @@ export class NotasComponent implements OnInit {
     this.notasFiscaisService.requestNotasFiscais('GET')?.subscribe({
       next: value => {this.notasFiscais = value; console.log(this.notasFiscais)}})
 
-    this.clienteService.requestCliente('GET')?.subscribe({
-      next: value => {this.clientes = value; console.log(this.clientes)}})
+
   }
 
   onSaved($event: any) {

@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Cliente} from "../../models/cliente";
-import {Observable, take} from "rxjs";
+import {delay, Observable, take, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 const API = 'http://localhost:8080/clientes';
 
@@ -10,53 +11,35 @@ const API = 'http://localhost:8080/clientes';
 })
 export class ClientesService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {  }
+
+  getClientes(): Observable<Cliente[]> {
+    return this.http
+      .get<Cliente[]>(API)
+      .pipe(take(1));
   }
 
-  requestCliente(metodo: string, cliente?: Cliente, id?: any){
-    let result: Observable<Cliente[]> | undefined;
-    switch (metodo) {
-      case 'GET':
-        result = this.http.get<Cliente[]>(API);
-        break;
-      case 'POST':
-        result = this.http.post<Cliente[]>(`${API}/novo`, cliente)
-        break;
-      case 'PUT':
-        result = this.http.put<Cliente[]>(`${API}/altera`, cliente)
-        break;
-      case 'DELETE':
-        result = this.http.delete<Cliente[]>(`${API}/deleta/${id}`)
-        break;
-    }
-    if(result) {
-      return result.pipe(take(1));
-    }
-    return;
+
+  postCliente(cliente: Cliente): Observable<Cliente[]>{
+
+    return this.http
+      .post<Cliente[]>( `${API}/novo`, cliente).pipe(take(1));
+    console.log(cliente);
+  }
+  putCliente(cliente: Cliente, _id: number): Observable<Cliente[]>{
+    return this.http
+      .put<Cliente[]>(`${API}/${_id}`, cliente)
+      .pipe(take(1));
+  }
+
+  deleteCliente(_id: number): Observable<Cliente[]>{
+    let temp = `${API}/${_id}`;
+    return this.http
+      .delete<Cliente[]>(`${API}/${_id}`)
+      .pipe(take(1));
+  }
+
+  requestCliente(get: string) {
+
   }
 }
-/*
-getNotasFiscais(): Observable<NotaFiscal[]> {
-return this.http
-.get<NotaFiscal[]>(API)
-.pipe(take(1));
-}
-
-postNotaFiscal(notaFiscal: NotaFiscal): Observable<NotaFiscal[]>{
-return this.http
-.post<NotaFiscal[]>(API, notaFiscal)
-.pipe(take(1));
-}
-putNotaFiscal(notaFiscal: NotaFiscal, id: number): Observable<NotaFiscal[]>{
-return this.http
-.put<NotaFiscal[]>(`${API}/${id}`, notaFiscal)
-.pipe(take(1));
-}
-
-deleteNotaFiscal(id: number): Observable<NotaFiscal[]>{
-let temp = `${API}/${id}`;
-return this.http
-.delete<NotaFiscal[]>(`${API}/${id}`)
-.pipe(take(1));
-}
-*/
