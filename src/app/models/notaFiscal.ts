@@ -1,11 +1,11 @@
 import {Cliente} from "./cliente";
-import {Itens_nota} from "./itens_nota";
+import {ItensNota} from "./itensNota";
 
-  export class Nota_fiscal {
+  export class NotaFiscal {
   id: bigint | undefined;
   numeroNota: bigint | undefined;
   dataNota: Date | undefined;
-  itensNota: Itens_nota | undefined;
+  itensNota: ItensNota | undefined;
   cliente_id: Cliente | undefined;
 
 }

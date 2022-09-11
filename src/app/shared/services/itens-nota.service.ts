@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, take} from "rxjs";
-import {Itens_nota} from "../../models/itens_nota";
+import {ItensNota} from "../../models/itensNota";
 
 
 const API = 'http://localhost:8080/notas';
@@ -13,22 +13,22 @@ export class ItensNotaService {
 
   constructor(private http: HttpClient) { }
 
-  getItensNotaFiscalId(nota_id: number | undefined): Observable<Itens_nota[]> {
+  getItensNotaFiscalId(nota_id: number | undefined): Observable<ItensNota[]> {
 
-    let itens: Observable<Itens_nota[]>;
+    let itens: Observable<ItensNota[]>;
 
-    itens = this.http.get<Itens_nota[]>(`${API}/${nota_id}`)
+    itens = this.http.get<ItensNota[]>(`${API}/${nota_id}`)
       .pipe(take(1));
 
     console.log("Itens-Serviço: ", itens);
     return this.http
-      .get<Itens_nota[]>(`${API}/${nota_id}`)
+      .get<ItensNota[]>(`${API}/${nota_id}`)
       .pipe(take(1));
   }
 
-  getItensNotasFiscais(): Observable<Itens_nota[]> {
+  getItensNotasFiscais(): Observable<ItensNota[]> {
     return this.http
-      .get<Itens_nota[]>(API)
+      .get<ItensNota[]>(API)
       .pipe(take(1));
   }
 

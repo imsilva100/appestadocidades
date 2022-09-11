@@ -1,10 +1,10 @@
 import {Produto} from "./produto";
-import {Nota_fiscal} from "./nota_fiscal";
+import {NotaFiscal} from "./notaFiscal";
 
-export class Itens_nota {
+export class ItensNota {
 
   id: bigint | undefined;
-  nota: Nota_fiscal | undefined;
+  nota: NotaFiscal | undefined;
   sequencia: number | undefined;
   produto: Produto | undefined;
   quantidade: number | undefined;

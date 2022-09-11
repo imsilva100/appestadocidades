@@ -2,8 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Produto} from "../../../models/produto";
 import {ProdutosService} from "../../services/produtos.service";
 import {DxDataGridComponent} from "devextreme-angular";
-import {Observable} from "rxjs";
-
 
 @Component({
   selector: 'app-produtos',
@@ -15,45 +13,41 @@ export class ProdutosComponent implements OnInit {
   @ViewChild (DxDataGridComponent , { static : false }) dataGrid : DxDataGridComponent | undefined
   produtos: Produto[] = [];
 
-  constructor(
-    private produtoService: ProdutosService,
-  ) {}
+  constructor(private produtosService: ProdutosService ) {}
 
   ngOnInit(): void {
-    this.produtoService.requestProduto('GET')?.subscribe({
+    this.produtosService.getProdutos().subscribe({
       next: value => this.produtos = value,
       error: err => console.log('ERRO: ', err),
       complete: () => {}
     });
 
   }
+  onSaved($event: any){
+    if($event.changes[0].type == 'insert'){
+      $event.changes[0].data.id = null;
 
-  onSaved($event: any) {
-    let result: Observable<Produto[]> | undefined;
-    if($event.changes.length !== 0) {
-      let data = $event.changes[0].data;
-      switch ($event.changes[0].type) {
-        case 'insert':
-          result = this.produtoService.requestProduto('POST', $event.changes[0].data);
-          break;
-        case 'update':
-          console.log(data);
-          result = this.produtoService.requestProduto('PUT', data, data.id);
-          break;
-        case 'remove':
-          let id = $event.changes[0].key;
-          result = this.produtoService.requestProduto('DELETE', data , id);
-          break;
-      }
-      if(result) {
-        result?.subscribe({
-          next: () => console.log,
-          error: err => console.log(err),
-          complete: () => console.log
-        })
-      }
-      this.dataGrid?.instance.refresh();
+      this.produtosService.postProduto($event.changes[0].data).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      })
+    }else if($event.changes[0].type == 'update') {
+
+      this.produtosService.putProduto($event.changes[0].data, $event.changes[0].data).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      })
+
+    }else if($event.changes[0].type == 'remove') {
+      this.produtosService.deleteProduto($event.changes[0].key).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      })
     }
+
   }
 
 }

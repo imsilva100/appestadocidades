@@ -4,9 +4,9 @@ import {DxDataGridComponent} from "devextreme-angular";
 import {Observable} from "rxjs";
 import {Cliente} from "../../../models/cliente";
 import {ClientesService} from "../../services/clientes.service";
-import {Nota_fiscal} from "../../../models/nota_fiscal";
+import {NotaFiscal} from "../../../models/notaFiscal";
 import {ItensNotaService} from "../../services/itens-nota.service";
-import {Itens_nota} from "../../../models/itens_nota";
+import {ItensNota} from "../../../models/itensNota";
 
 @Component({
   selector: 'app-notas',
@@ -17,13 +17,9 @@ export class NotasComponent implements OnInit {
 
   @ViewChild (DxDataGridComponent , { static : false }) dataGrid : DxDataGridComponent | undefined
 
-  notasFiscais: Nota_fiscal[] = [];
+  notasFiscais: NotaFiscal[] = [];
   clientes: Cliente[] = [];
-  itensNota: Itens_nota[] = [];
-
-
-
-
+  itensNota: ItensNota[] = [];
 
   constructor(
     private notasFiscaisService: NotasService,
@@ -31,15 +27,50 @@ export class NotasComponent implements OnInit {
     private itensNotaService: ItensNotaService) { }
 
   ngOnInit(): void {
+    this.notasFiscaisService.getNotas().subscribe({
+      next: value => this.notasFiscais = value,
+      error: err => console.log('ERRO: ', err),
+      complete: () => {}
+    });
 
-    this.notasFiscaisService.requestNotasFiscais('GET')?.subscribe({
-      next: value => {this.notasFiscais = value; console.log(this.notasFiscais)}})
-
+    this.clienteService.getClientes().subscribe({
+      next: value => this.clientes = value,
+      error: err => console.log('ERRO: ', err),
+      complete: () => {}
+    });
 
   }
 
-  onSaved($event: any) {
-    let result: Observable<Nota_fiscal[]> | undefined;
+  onSaved($event: any){
+    if($event.changes[0].type == 'insert'){
+      $event.changes[0].data.id = null;
+
+      this.notasFiscaisService.postNota($event.changes[0].data).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      })
+    }else if($event.changes[0].type == 'update') {
+
+      this.notasFiscaisService.putNota($event.changes[0].data, $event.changes[0].data).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      })
+
+    }else if($event.changes[0].type == 'remove') {
+      this.notasFiscaisService.deleteNota($event.changes[0].key).subscribe({
+        next: () => console.log,
+        error: err => console.log(err),
+        complete: () => console.log
+      })
+    }
+
+  }
+
+
+  /*onSaved($event: any) {
+    let result: Observable<NotaFiscal[]> | undefined;
 
     if($event.changes.length !== 0) {
 
@@ -73,7 +104,7 @@ export class NotasComponent implements OnInit {
         this.dataGrid?.instance.refresh();
       }
     }
-  }
+  }*/
 
   getClienteNome(item: any) {
     if (!item) {
