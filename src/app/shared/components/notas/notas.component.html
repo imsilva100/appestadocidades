@@ -3,6 +3,7 @@
   [dataSource]="notasFiscais"
   keyExpr="id"
   [showBorders]="true"
+  (onSaved)="onSaved($event)"
 >
   <dxo-paging [enabled]="false"></dxo-paging>
   <dxo-editing
@@ -36,99 +37,26 @@
         >
         </dxi-item>
       </dxi-item>
-
-      <dxi-item
-        itemType="group"
-        caption="Home Address"
-        [colCount]="2"
-        [colSpan]="2"
-      >
-        <dxi-item dataField="StateID"></dxi-item>
-        <dxi-item dataField="Address"></dxi-item>
-      </dxi-item>
+        <dxi-item itemType="group" caption="Itens da Nota" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="itensNota.0.produtos.codigo"></dxi-item>
+          <dxi-item dataField="Address"></dxi-item>
+        </dxi-item>
     </dxo-form>
+
   </dxo-editing>
 
   <dxi-column dataField="numeroNota" caption="Número" [width]="90"></dxi-column>
   <dxi-column dataField="dataNota" dataType="date" caption="Data Nota"></dxi-column>
   <dxi-column dataField="cliente.nome" caption="Cliente"></dxi-column>
-  <dxi-column dataField="BirthDate" dataType="date"></dxi-column>
-  <dxi-column dataField="Position" [width]="170"></dxi-column>
-  <dxi-column dataField="HireDate" dataType="date"></dxi-column>
-  <dxi-column dataField="StateID" caption="State" [width]="125">
-    <dxo-lookup [dataSource]="clientes" displayExpr="nome" valueExpr="id">
-    </dxo-lookup>
-  </dxi-column>
+  <dxi-column dataField="id" caption="Valor Total"></dxi-column>
+  <dxi-column dataField="Position" [width]="90" [visible]="false"></dxi-column>
+  <dxi-column dataField="HireDate" dataType="date" [visible]="false"></dxi-column>
+  <dxi-column dataField="StateID" caption="State" [width]="125" [visible]="false"> </dxi-column>
   <dxi-column dataField="Address" [visible]="false"></dxi-column>
   <dxi-column dataField="Notes" [visible]="false"></dxi-column>
+
+  <dxo-master-detail [enabled]="true" template="detalheNota"></dxo-master-detail>
+  <div *dxTemplate="let itens of 'detalheNota'">
+    <itensnota [key]="itens.data.codigo"></itensnota>
+  </div>
 </dx-data-grid>
-
-
-
-
-
-
-<!--
-<dx-tree-list
-  id="employees"
-  [dataSource]="notasFiscais"
-  keyExpr="id"
-  parentIdExpr="nota_id"
-  [showRowLines]="true"
-  [showBorders]="true"
-  [columnAutoWidth]="true"
-  [expandedRowKeys]="[1, 2, 3, 4, 5]"
-  (onEditorPreparing)="editorPreparing($event)"
-  (onInitNewRow)="initNewRow($event)"
->
-  <dxo-editing
-    mode="form"
-    [allowUpdating]="true"
-    [allowDeleting]="true"
-    [allowAdding]="true"
-  >
-  </dxo-editing>
-
-  <dxi-column dataField="numeroNota" caption="Nº">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="dataNota"caption="Data" dataType="date" format="dd/MM/yyyy">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-    <dxi-column dataField="cliente.nome" caption="Cliente" [editorOptions]="{ width: 500 }">
-    <dx-select-box
-      [dataSource]="clientes"
-      displayExpr="nome"
-      valueExpr="id">
-    </dx-select-box>
-  </dxi-column>
-  <dxi-column dataField="itensNota.0.id" [visible]="false"[width]="50">
-  <dxi-validation-rule type="required"></dxi-validation-rule>
-</dxi-column>
-  <dxi-column dataField="itensNota.0.produto.codigo" caption="Codigo" [width]="150">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="itensNota.0.produto.descricao" caption="Descriçao Produto" [width]="200">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="itensNota.0.produto.preco" caption="Preço" format="R$ #,###,##0.00" [width]="120">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="itensNota.1.id" [visible]="false"[width]="50">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="itensNota.1.produto.codigo" caption="Codigo" [width]="150">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="itensNota.1.produto.descricao" caption="Descriçao Produto " [width]="200">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column dataField="itensNota.1.produto.preco" caption="Preço" format="R$ #,###,##0.00" [width]="120">
-    <dxi-validation-rule type="required"></dxi-validation-rule>
-  </dxi-column>
-  <dxi-column type="buttons">
-    <dxi-button name="edit"></dxi-button>
-    <dxi-button name="delete"></dxi-button>
-  </dxi-column>
-</dx-tree-list>
--->

@@ -12,7 +12,7 @@ import {NotasComponent} from './shared/components/notas/notas.component';
 import {ClientesService} from "./shared/services/clientes.service";
 import {ProdutosService} from "./shared/services/produtos.service";
 import {NotasService} from "./shared/services/notas.service";
-import { ItensNotaFiscalDetalheComponent } from './shared/components/notas/itens-nota/itens-nota-fiscal/itens-nota-fiscal-detalhe.component';
+import { ItensnotaComponent } from './shared/components/notas/itensnota/itensnota.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxDataGridModule,
@@ -32,7 +32,7 @@ import {EstadosCidadesModule} from "./shared/components/estados-cidades/estados-
     ClientesComponent,
     ProdutosComponent,
     NotasComponent,
-    ItensNotaFiscalDetalheComponent
+    ItensnotaComponent
   ],
   imports: [
     BrowserModule,

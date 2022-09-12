@@ -3,6 +3,7 @@ import {Observable, take} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {NotaFiscal} from "../../models/notaFiscal";
 import {Cliente} from "../../models/cliente";
+import {ItensNota} from "../../models/itensNota";
 
 const API = 'http://localhost:8080/notas';
 
@@ -16,6 +17,10 @@ export class NotasService {
     return this.http.get<NotaFiscal[]>(API).pipe(take(1));
   }
 
+  getItensNotas(id: number): Observable<NotaFiscal[]> {
+    return this.http.get<NotaFiscal[]>(API).pipe(take(1));
+  }
+
   postNota(nota: NotaFiscal): Observable<NotaFiscal[]>{
     return this.http.post<NotaFiscal[]>( `${API}/nova`, nota).pipe(take(1));
   }
@@ -26,6 +31,14 @@ export class NotasService {
 
   deleteNota( id: number): Observable<NotaFiscal[]>{
     return this.http.delete<NotaFiscal[]>(`${API}/deleta/${id}`).pipe(take(1));
+  }
+
+  getItensNotaFiscalId(idNota: number | undefined): Observable<ItensNota[]> {
+
+    let itens: Observable<ItensNota[]>;
+
+    itens = this.http.get<ItensNota[]>(`${API}/${idNota}`).pipe(take(1));
+    return this.http.get<ItensNota[]>(`${API}/${idNota}`).pipe(take(1));
   }
 
 }

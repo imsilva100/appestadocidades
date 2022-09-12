@@ -1,0 +1,38 @@
+<dx-data-grid
+  id="gridDetailContainer"
+  [dataSource]="itensNota"
+  alignment="center"
+  [showColumnLines]="true"
+  [showRowLines]="true"
+  [showBorders]="true"
+  [rowAlternationEnabled]="true"
+>
+
+ <dxo-paging [enabled]="true"></dxo-paging>
+
+  <dxo-editing
+    title="Notas Fiscais"
+    mode="popup"
+    [allowUpdating]="true"
+    [allowAdding]="true"
+    [allowDeleting]="true"
+    [confirmDelete]="true"
+    [useIcons]="true"
+  >
+    <dxo-popup title="Detalhes" [showTitle]="true" [width]="900" [height]="725"></dxo-popup>
+    <dxo-form>
+      <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
+        <dxi-item dataField="produto.codigo" [editorOptions]="{ width: 200 }"></dxi-item>
+        <dxi-item dataField="produto.descricao" [editorOptions]="{ width: 200 }"></dxi-item>
+        <dxi-item dataField="quantidade" [editorOptions]="{ width: 200 }"></dxi-item></dxi-item>
+    </dxo-form>
+
+  </dxo-editing>
+  <dxi-column [width]="60" alignment="center" dataType="string" dataField="produto.codigo" caption="Cód"></dxi-column>
+  <dxi-column [width]="200" alignment="left"  dataType="string" dataField="numeroNota" caption="Produto"></dxi-column>
+  <dxi-column [width]="150" alignment="right" dataType="currency" format="R$ #,###,##0.00" dataField="produto.preco" caption="Valor"></dxi-column>
+  <dxi-column [width]="70" alignment="right"  dataType="float" format="##,##0.00" dataField="quantidade" caption="Qtde."></dxi-column>
+  <dxi-column [width]="150" [calculateCellValue]="getValorUnitarioVenda" alignment="right" format="R$ #,###,##0.00" dataType="currency" caption="Valor Unitário"></dxi-column>
+  <dxi-column [width]="150" alignment="right" dataType="currency" format="R$ #,###,##0.00" dataField="valor" caption="Valor total"></dxi-column>
+
+</dx-data-grid>
